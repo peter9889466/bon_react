@@ -5,15 +5,19 @@ const Header = ({authenticate, setAuthenticate}) => {
   // 로그인 버튼 클릭 시, 메인페이지로 이동하는 함수를 구현하시오.
   // 로그인 -> 로그아웃 텍스트 전환
   // 로그아웃 -> 로그인 텍스트로 전환
-
+  
   const navigate = useNavigate();
 
-  const goToLogin = (e) => {
-    if(e.target.innerText===`로그인`)
-      navigate(`/login`)
-    else
+  const lbtn = () => {
+    if(authenticate){
       setAuthenticate(false)
+      navigate("/")
+    } else{
+      navigate("/login");
+    }
   }
+
+  console.log(authenticate)
 
   return (
     <div className="header-box">
@@ -38,7 +42,7 @@ const Header = ({authenticate, setAuthenticate}) => {
         </ul>
       </div>
       <div className="header-box-util">
-        <button onClick={goToLogin}>{authenticate?`로그아웃`:`로그인`}</button>
+        <button onClick={lbtn}>{authenticate?"로그아웃":"로그인"}</button>
       </div>
     </div>
   );

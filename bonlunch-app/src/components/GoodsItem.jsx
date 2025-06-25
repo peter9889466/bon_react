@@ -6,8 +6,10 @@ const GoodsItem = ({item}) => {
     <div className="goods-item" style={{ position: "relative" }}>
       <div className="goods-item-icon">
         {/* 해당 상품이 new인지 best인지 조건부 렌더링을 통해 출력하시오. */}
-        {item.is_new && <em className="goods-new">new</em>}
-        {item.is_best && <em className="goods-best">best</em>}
+
+        {item.new?(<em className="goods-new">new</em>):(
+          item.best?<em className="goods-best">best</em>:("")
+        )}
       </div>
       <div className="goods-thumb">
         {/* 
@@ -15,7 +17,7 @@ const GoodsItem = ({item}) => {
           상세페이지 URL : /menu/상품의 id
         */}
         <Link to={`/goods/${item.id}`}>
-          <img src={item.main_thumb} alt="이미지" />
+        <img src={item.main_thumb} alt="이미지" style={{width:260, height:260}}/>
         </Link>
       </div>
       <div className="goods-name">

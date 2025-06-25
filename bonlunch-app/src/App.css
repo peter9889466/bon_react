@@ -142,7 +142,7 @@ body{
     font-weight: bold;
 }
 
-.goods-thumb img{
+.goods-thumb > a > img{
     width: 260px;
 }
 
